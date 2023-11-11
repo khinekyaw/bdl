@@ -126,7 +126,6 @@ const TeamList = () => {
               <TeamCard key={team.id} {...team} />
             ))}
           </div>
-          <ToastContainer />
         </>
       ) : (
         <div className="flex justify-center items-center flex-col gap-5 min-h-[50vh]">

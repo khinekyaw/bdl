@@ -1,9 +1,10 @@
 import React from "react"
 import { Card, CardHeader, CardBody } from "@nextui-org/card"
 import Image from "next/image"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 import { PlayerInterface, SelectInterface, TeamInterface } from "@/types"
-import { Select, SelectItem } from "@nextui-org/react"
 
 export default function PlayerCard({
   id,
@@ -38,20 +39,26 @@ export default function PlayerCard({
           />
         </div>
 
-        <select
-          defaultValue={currentTeam?.id}
-          className="border-1 rounded-lg p-2"
-          onChange={(e) => {
-            onSelect(parseInt(e.target.value))
-          }}
-        >
-          <option value="">Select a team</option>
-          {selectData.map((data) => (
-            <option key={data.value} value={data.value}>
-              {data.label}
-            </option>
-          ))}
-        </select>
+        <div className="flex gap-2 items-center">
+          <p>Team: </p>
+          <select
+            defaultValue={currentTeam?.id}
+            className="border-1 rounded-lg p-2 flex-1"
+            onChange={(e) => {
+              onSelect(parseInt(e.target.value))
+              toast.success("Change team successfully!", {
+                position: "top-center",
+              })
+            }}
+          >
+            <option value="">Select a team</option>
+            {selectData.map((data) => (
+              <option key={data.value} value={data.value}>
+                {data.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </CardBody>
     </Card>
   )

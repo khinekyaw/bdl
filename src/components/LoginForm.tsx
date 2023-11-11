@@ -27,7 +27,7 @@ const LoginForm = () => {
   } = useForm<Inputs>()
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     dispatch(login(data.username))
-    router.replace("/players")
+    router.replace("/")
   }
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const LoginForm = () => {
           </Button>
         </CardBody>
       </Card>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </form>
   )
 }

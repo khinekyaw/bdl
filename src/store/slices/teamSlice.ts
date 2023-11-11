@@ -49,14 +49,14 @@ export const teamSlice = createSlice({
       action: PayloadAction<{ player: PlayerInterface; teamId: number }>
     ) => {
       const { player, teamId } = action.payload
-      // console.log(teamId)
+
       state.teams = state.teams.map((t) => {
         const updatedPlayers = t.players.filter((p) => p.id !== player.id)
 
         if (t.id === teamId) {
           return { ...t, players: [player, ...updatedPlayers] }
         }
-        return t
+        return { ...t, players: updatedPlayers }
       })
       store("teams", state.teams)
     },

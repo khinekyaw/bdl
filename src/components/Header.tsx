@@ -43,11 +43,11 @@ export default function App() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive={pathname === "/"}>
-          <Link href="/">Home(API)</Link>
+          <Link href="/">Players</Link>
         </NavbarItem>
-        <NavbarItem isActive={pathname === "/players"}>
+        {/* <NavbarItem isActive={pathname === "/players"}>
           <Link href="/players">Players</Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem isActive={pathname === "/teams"}>
           <Link href="/teams">Teams</Link>
         </NavbarItem>
@@ -72,7 +72,9 @@ export default function App() {
           </NavbarItem>
         )}
       </NavbarContent>
-      <ToastContainer />
+      <div className="fixed">
+        <ToastContainer />
+      </div>
     </Navbar>
   )
 }
