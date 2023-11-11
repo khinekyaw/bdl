@@ -129,7 +129,7 @@ const TeamList = () => {
         </>
       ) : (
         <div className="flex justify-center items-center flex-col gap-5 min-h-[50vh]">
-          <p>No teams data, Add now!</p>
+          <p>No Data!</p>
           <TeamModal teams={teams} />
         </div>
       )}

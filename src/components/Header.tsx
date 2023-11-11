@@ -34,7 +34,7 @@ export default function Header() {
     const username = Cookies.get("username")
     username && dispatch(login(username))
     dispatch(setTeams(store("teams") || []))
-  }, [])
+  }, [dispatch])
 
   const handleLogout = () => {
     dispatch(logout())
@@ -121,59 +121,3 @@ export default function Header() {
     </Navbar>
   )
 }
-
-// export default function Header() {
-//   const dispatch = useDispatch()
-//   const username = useSelector((state: RootState) => state.auth.username)
-//   const pathname = usePathname()
-
-//   useEffect(() => {
-//     const username = Cookies.get("username")
-//     username && dispatch(login(username))
-//     dispatch(setTeams(store("teams") || []))
-//   }, [])
-
-//   const handleLogout = () => {
-//     dispatch(logout())
-//     toast.success("Logout successfully!")
-//   }
-
-//   return (
-//     <Navbar>
-//       <NavbarBrand>
-//         <p className="font-bold text-inherit">NBA</p>
-//       </NavbarBrand>
-//       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-//         <NavbarItem isActive={pathname === "/"}>
-//           <Link href="/">Players</Link>
-//         </NavbarItem>
-//         <NavbarItem isActive={pathname === "/teams"}>
-//           <Link href="/teams">Teams</Link>
-//         </NavbarItem>
-//       </NavbarContent>
-//       <NavbarContent justify="end">
-//         {username ? (
-//           <>
-//             <NavbarItem>
-//               <p className="font-bold">Signed in as {username}</p>
-//             </NavbarItem>
-//             <NavbarItem>
-//               <Button onClick={handleLogout} variant="bordered" color="danger">
-//                 Logout
-//               </Button>
-//             </NavbarItem>
-//           </>
-//         ) : (
-//           <NavbarItem>
-//             <Button as={Link} color="primary" href="/login" variant="bordered">
-//               Login
-//             </Button>
-//           </NavbarItem>
-//         )}
-//       </NavbarContent>
-//       <div className="fixed">
-//         <ToastContainer />
-//       </div>
-//     </Navbar>
-//   )
-// }

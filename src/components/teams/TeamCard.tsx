@@ -184,7 +184,7 @@ const TeamCard = ({ id, name, players, region, country }: TeamInterface) => {
             <Image
               alt={name}
               className="object-cover rounded-xl w-full h-full"
-              src="/images/nba-symbol.jpg"
+              src="/images/team.webp"
               fill
               sizes="20vw"
             />
