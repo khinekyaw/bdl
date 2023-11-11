@@ -33,7 +33,7 @@ export default function App() {
 
   const handleLogout = () => {
     dispatch(logout())
-    toast.success("Logout successfully!", { position: "top-center" })
+    toast.success("Logout successfully!")
   }
 
   return (

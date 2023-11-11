@@ -46,9 +46,7 @@ export default function PlayerCard({
             className="border-1 rounded-lg p-2 flex-1"
             onChange={(e) => {
               onSelect(parseInt(e.target.value))
-              toast.success("Change team successfully!", {
-                position: "top-center",
-              })
+              toast.success("Change team successfully!")
             }}
           >
             <option value="">Select a team</option>

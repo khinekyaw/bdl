@@ -36,12 +36,26 @@ export const teamSlice = createSlice({
       state.teams = action.payload
       store("teams", state.teams)
     },
+    deleteTeam: (state, action: PayloadAction<number>) => {
+      state.teams = state.teams.filter((team) => team.id !== action.payload)
+      store("teams", state.teams)
+    },
     addTeam: (state, action: PayloadAction<TeamInterface>) => {
       const team = action.payload
       state.teams = [
         { ...team, id: getLargestId(state.teams) + 1, players: [] },
         ...state.teams,
       ]
+      store("teams", state.teams)
+    },
+    editTeam: (state, action: PayloadAction<TeamInterface>) => {
+      const newTeam = action.payload
+      state.teams = state.teams.map((team) => {
+        if (team.id === newTeam.id) {
+          return newTeam
+        }
+        return team
+      })
       store("teams", state.teams)
     },
     flipPlayer: (
@@ -64,6 +78,7 @@ export const teamSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setTeams, addTeam, flipPlayer } = teamSlice.actions
+export const { setTeams, addTeam, deleteTeam, flipPlayer, editTeam } =
+  teamSlice.actions
 
 export default teamSlice.reducer

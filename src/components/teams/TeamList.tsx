@@ -1,6 +1,6 @@
 "use client"
 import { RootState } from "@/store"
-import React, { useEffect } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Button, Input } from "@nextui-org/react"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -12,12 +12,12 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 import TeamCard from "./TeamCard"
 import { TeamInterface } from "@/types"
-import { addTeam, setTeams } from "@/store/slices/teamSlice"
+import { addTeam } from "@/store/slices/teamSlice"
 
 const TeamModal = ({ teams }: { teams: TeamInterface[] }) => {
   const dispatch = useDispatch()
