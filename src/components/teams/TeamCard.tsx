@@ -37,7 +37,7 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
     dispatch(editTeam(data))
     onOpenChange()
     toast.success("Created a team")
-    console.log("render")
+    // console.log("render")
   }
 
   return (
@@ -50,7 +50,12 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
       >
         Edit
       </Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="4xl">
+      <Modal
+        scrollBehavior="outside"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        size="4xl"
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -59,10 +64,10 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
                   Edit Team
                 </ModalHeader>
                 <ModalBody>
-                  <div className="flex gap-3">
-                    <div>
+                  <div className="flex gap-3 flex-wrap flex-col lg:flex-row">
+                    <div className="flex-1 lg:w-auto w-full">
                       <input
-                        className="border-1 p-2 rounded-lg"
+                        className="border-1 p-2 rounded-lg w-full"
                         type="text"
                         placeholder="Team Name"
                         {...register("name", {
@@ -87,9 +92,9 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
                       ) : null}
                     </div>
 
-                    <div>
+                    <div className="flex-1 lg:w-auto w-full">
                       <input
-                        className="border-1 p-2 rounded-lg"
+                        className="border-1 p-2 rounded-lg w-full"
                         type="text"
                         placeholder="Country"
                         {...register("country", {
@@ -102,9 +107,9 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
                         </small>
                       ) : null}
                     </div>
-                    <div>
+                    <div className="flex-1 lg:w-auto w-full">
                       <input
-                        className="border-1 p-2 rounded-lg"
+                        className="border-1 p-2 rounded-lg w-full"
                         type="text"
                         placeholder="Region"
                         {...register("region", {
@@ -120,7 +125,7 @@ const TeamModal = ({ team }: { team: TeamInterface }) => {
                   </div>
                   <div className="pt-4">
                     <p className="font-bold mb-4 text-xl">Players</p>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-2">
                       {team.players.length ? (
                         team.players.map((player) => (
                           <div

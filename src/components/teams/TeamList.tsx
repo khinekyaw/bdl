@@ -35,8 +35,8 @@ const TeamModal = ({ teams }: { teams: TeamInterface[] }) => {
     dispatch(addTeam(data))
     reset()
     onOpenChange()
-    toast.success("Created a team", { position: "top-center" })
-    console.log("render")
+    toast.success("Created a team")
+    // console.log("render")
   }
 
   return (
@@ -121,7 +121,7 @@ const TeamList = () => {
       {teams.length ? (
         <>
           <TeamModal teams={teams} />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {teams.map((team) => (
               <TeamCard key={team.id} {...team} />
             ))}

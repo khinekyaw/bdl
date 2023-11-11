@@ -11,8 +11,6 @@ function RouteGuard({ children, required = null }: RouteGardInterface) {
   const cookieStore = cookies()
   const username = cookieStore.get("username")
 
-  console.log(username?.value)
-
   if (required === "unauth") {
     if (username?.value) {
       redirect("/")

@@ -52,7 +52,12 @@ export const teamSlice = createSlice({
       const newTeam = action.payload
       state.teams = state.teams.map((team) => {
         if (team.id === newTeam.id) {
-          return newTeam
+          return {
+            ...team,
+            name: newTeam.name,
+            country: newTeam.country,
+            region: newTeam.region,
+          }
         }
         return team
       })

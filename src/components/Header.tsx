@@ -6,6 +6,9 @@ import {
   NavbarContent,
   NavbarItem,
   Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from "@nextui-org/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -19,11 +22,13 @@ import store from "store2"
 import { login, logout } from "@/store/slices/authSlice"
 import { RootState } from "@/store"
 import { setTeams } from "@/store/slices/teamSlice"
+import Image from "next/image"
 
-export default function App() {
+export default function Header() {
   const dispatch = useDispatch()
   const username = useSelector((state: RootState) => state.auth.username)
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
   useEffect(() => {
     const username = Cookies.get("username")
@@ -37,21 +42,46 @@ export default function App() {
   }
 
   return (
-    <Navbar>
-      <NavbarBrand>
-        <p className="font-bold text-inherit">NBA</p>
-      </NavbarBrand>
+    <Navbar
+      disableAnimation
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle />
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarBrand>
+          {/* <AcmeLogo /> */}
+          <Link href={"/"}>
+            <div className="w-7 h-7 relative">
+              <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
+            </div>
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarBrand>
+          <Link href={"/"}>
+            <div className="w-7 h-7 relative">
+              <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
+            </div>
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem isActive={pathname === "/"}>
           <Link href="/">Players</Link>
         </NavbarItem>
-        {/* <NavbarItem isActive={pathname === "/players"}>
-          <Link href="/players">Players</Link>
-        </NavbarItem> */}
         <NavbarItem isActive={pathname === "/teams"}>
           <Link href="/teams">Teams</Link>
         </NavbarItem>
       </NavbarContent>
+
       <NavbarContent justify="end">
         {username ? (
           <>
@@ -72,9 +102,78 @@ export default function App() {
           </NavbarItem>
         )}
       </NavbarContent>
+
+      <NavbarMenu>
+        <NavbarItem isActive={pathname === "/"}>
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>
+            Players
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={pathname === "/teams"}>
+          <Link href="/teams" onClick={() => setIsMenuOpen(false)}>
+            Teams
+          </Link>
+        </NavbarItem>
+      </NavbarMenu>
       <div className="fixed">
         <ToastContainer />
       </div>
     </Navbar>
   )
 }
+
+// export default function Header() {
+//   const dispatch = useDispatch()
+//   const username = useSelector((state: RootState) => state.auth.username)
+//   const pathname = usePathname()
+
+//   useEffect(() => {
+//     const username = Cookies.get("username")
+//     username && dispatch(login(username))
+//     dispatch(setTeams(store("teams") || []))
+//   }, [])
+
+//   const handleLogout = () => {
+//     dispatch(logout())
+//     toast.success("Logout successfully!")
+//   }
+
+//   return (
+//     <Navbar>
+//       <NavbarBrand>
+//         <p className="font-bold text-inherit">NBA</p>
+//       </NavbarBrand>
+//       <NavbarContent className="hidden sm:flex gap-4" justify="center">
+//         <NavbarItem isActive={pathname === "/"}>
+//           <Link href="/">Players</Link>
+//         </NavbarItem>
+//         <NavbarItem isActive={pathname === "/teams"}>
+//           <Link href="/teams">Teams</Link>
+//         </NavbarItem>
+//       </NavbarContent>
+//       <NavbarContent justify="end">
+//         {username ? (
+//           <>
+//             <NavbarItem>
+//               <p className="font-bold">Signed in as {username}</p>
+//             </NavbarItem>
+//             <NavbarItem>
+//               <Button onClick={handleLogout} variant="bordered" color="danger">
+//                 Logout
+//               </Button>
+//             </NavbarItem>
+//           </>
+//         ) : (
+//           <NavbarItem>
+//             <Button as={Link} color="primary" href="/login" variant="bordered">
+//               Login
+//             </Button>
+//           </NavbarItem>
+//         )}
+//       </NavbarContent>
+//       <div className="fixed">
+//         <ToastContainer />
+//       </div>
+//     </Navbar>
+//   )
+// }

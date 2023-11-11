@@ -73,7 +73,7 @@ const ClientPlayerList = ({
 
   return (
     <InfiniteScroll
-      className="grid grid-cols-3 gap-4"
+      className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
       pageStart={0}
       loadMore={fetchItems}
       hasMore={true || false}
