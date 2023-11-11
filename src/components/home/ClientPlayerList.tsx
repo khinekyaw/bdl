@@ -7,11 +7,17 @@ import PlayerCard from "@/components/PlayerCard"
 import PlayerListLoading from "./PlayerListLoading"
 import { PlayerApiDataInterface, PlayerInterface } from "@/types"
 
-const ClientPlayerList = () => {
-  const [players, setPlayers] = useState<PlayerInterface[]>([])
+const ClientPlayerList = ({
+  initialData = [],
+  nextPage = 1,
+}: {
+  initialData?: PlayerInterface[]
+  nextPage?: number
+}) => {
+  const [players, setPlayers] = useState<PlayerInterface[]>(initialData)
   const [fetching, setFetching] = useState(false)
   const [nextPageUrl, setNextPageUrl] = useState(
-    `${process.env["NEXT_PUBLIC_API_URL"]}/players?page=0&per_page=10`
+    `${process.env["NEXT_PUBLIC_API_URL"]}/players?page=${nextPage}&per_page=10`
   )
 
   const fetchItems = useCallback(async () => {
