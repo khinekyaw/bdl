@@ -12,7 +12,6 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react"
-import store from "store2"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
@@ -37,11 +36,8 @@ const TeamModal = ({ teams }: { teams: TeamInterface[] }) => {
     reset()
     onOpenChange()
     toast.success("Created a team", { position: "top-center" })
+    console.log("render")
   }
-
-  useEffect(() => {
-    dispatch(setTeams(store("teams") || []))
-  }, [])
 
   return (
     <>
@@ -124,7 +120,6 @@ const TeamList = () => {
     <div>
       {teams.length ? (
         <>
-          {" "}
           <TeamModal teams={teams} />
           <div className="grid grid-cols-2 gap-4">
             {teams.map((team) => (

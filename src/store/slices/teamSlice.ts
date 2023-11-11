@@ -1,4 +1,4 @@
-import { TeamInterface } from "@/types"
+import { PlayerInterface, TeamInterface } from "@/types"
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import store from "store2"
@@ -39,15 +39,31 @@ export const teamSlice = createSlice({
     addTeam: (state, action: PayloadAction<TeamInterface>) => {
       const team = action.payload
       state.teams = [
-        { ...team, id: getLargestId(state.teams) + 1, player_count: 0 },
+        { ...team, id: getLargestId(state.teams) + 1, players: [] },
         ...state.teams,
       ]
+      store("teams", state.teams)
+    },
+    flipPlayer: (
+      state,
+      action: PayloadAction<{ player: PlayerInterface; teamId: number }>
+    ) => {
+      const { player, teamId } = action.payload
+      // console.log(teamId)
+      state.teams = state.teams.map((t) => {
+        const updatedPlayers = t.players.filter((p) => p.id !== player.id)
+
+        if (t.id === teamId) {
+          return { ...t, players: [player, ...updatedPlayers] }
+        }
+        return t
+      })
       store("teams", state.teams)
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setTeams, addTeam } = teamSlice.actions
+export const { setTeams, addTeam, flipPlayer } = teamSlice.actions
 
 export default teamSlice.reducer

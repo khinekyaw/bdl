@@ -14,9 +14,11 @@ import { useDispatch, useSelector } from "react-redux"
 import Cookies from "js-cookie"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import store from "store2"
 
 import { login, logout } from "@/store/slices/authSlice"
 import { RootState } from "@/store"
+import { setTeams } from "@/store/slices/teamSlice"
 
 export default function App() {
   const dispatch = useDispatch()
@@ -26,6 +28,7 @@ export default function App() {
   useEffect(() => {
     const username = Cookies.get("username")
     username && dispatch(login(username))
+    dispatch(setTeams(store("teams") || []))
   }, [])
 
   const handleLogout = () => {

@@ -6,8 +6,8 @@ export default async function Home() {
   return (
     <div>
       {/* <PlayerListLoading /> */}
-      <ServerPlayerList />
-      {/* <ClientPlayerList /> */}
+      {/* <ServerPlayerList /> */}
+      <ClientPlayerList />
     </div>
   )
 }

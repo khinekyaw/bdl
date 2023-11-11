@@ -1,7 +1,7 @@
 import React from "react"
 
 const PlayersPage = () => {
-  return <div>PlayersPage</div>
+  return <div>Player</div>
 }
 
 export default PlayersPage

@@ -4,6 +4,7 @@ export interface TeamInterface {
   player_count: number
   region: string
   country: string
+  players: PlayerInterface[]
 }
 
 export interface PlayerInterface {
@@ -25,4 +26,9 @@ export interface PlayerApiDataInterface {
     per_page: number
     total_count: number
   }
+}
+
+export interface SelectInterface {
+  label: string
+  value: number
 }

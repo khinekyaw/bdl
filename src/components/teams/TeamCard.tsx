@@ -4,7 +4,7 @@ import Image from "next/image"
 
 import { TeamInterface } from "@/types"
 
-const TeamCard = ({ name, player_count, region, country }: TeamInterface) => {
+const TeamCard = ({ name, players, region, country }: TeamInterface) => {
   return (
     <Card className="p-1">
       <CardBody className="overflow-visible">
@@ -23,7 +23,7 @@ const TeamCard = ({ name, player_count, region, country }: TeamInterface) => {
             <p>
               {region}, {country}
             </p>
-            <p>Total payers: {player_count}</p>
+            <p>Total payers: {players.length}</p>
           </div>
         </div>
       </CardBody>
