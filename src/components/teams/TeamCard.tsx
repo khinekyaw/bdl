@@ -185,8 +185,9 @@ const TeamCard = ({ id, name, players, region, country }: TeamInterface) => {
               alt={name}
               className="object-cover rounded-xl w-full h-full"
               src="/images/team.webp"
-              fill
               sizes="20vw"
+              fill
+              priority
             />
           </div>
           <div className="flex-1">

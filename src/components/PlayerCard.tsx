@@ -24,18 +24,19 @@ export default function PlayerCard({
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">Position - {position}</p>
         <small className="text-default-500">Id {id}</small>
-        <h4 className="font-bold text-large">
+        <h2 className="font-bold text-large">
           {first_name} {last_name}
-        </h4>
+        </h2>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <div className="w-full aspect-video relative mb-3">
           <Image
             alt={first_name + last_name}
             className="object-cover rounded-xl w-full h-full"
-            src="/images/nba-symbol.jpg"
-            fill
+            src="/images/nba.png"
             sizes="30vw"
+            fill
+            priority
           />
         </div>
 

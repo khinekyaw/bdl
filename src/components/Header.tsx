@@ -53,24 +53,20 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <Link href={"/"}>
-            <div className="w-7 h-7 relative">
-              <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
-            </div>
-          </Link>
-        </NavbarBrand>
+        {/* <AcmeLogo /> */}
+        <Link href={"/"}>
+          <div className="w-7 h-7 relative">
+            <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
+          </div>
+        </Link>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-          <Link href={"/"}>
-            <div className="w-7 h-7 relative">
-              <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
-            </div>
-          </Link>
-        </NavbarBrand>
+        <Link href={"/"}>
+          <div className="w-7 h-7 relative">
+            <Image src={"/images/logo.png"} alt="logo" fill sizes="8vw" />
+          </div>
+        </Link>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -86,7 +82,10 @@ export default function Header() {
         {username ? (
           <>
             <NavbarItem>
-              <p className="font-bold">Signed in as {username}</p>
+              <p className="font-bold">
+                <span className="hidden md:inline">Signed in as </span>
+                <span className="text-sky-500">{username}</span>
+              </p>
             </NavbarItem>
             <NavbarItem>
               <Button onClick={handleLogout} variant="bordered" color="danger">
