@@ -1,5 +1,9 @@
 export interface TeamInterface {
   id: number
+  name: string
+  player_count: number
+  region: string
+  country: string
 }
 
 export interface PlayerInterface {

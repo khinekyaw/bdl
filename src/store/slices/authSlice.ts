@@ -11,8 +11,8 @@ const initialState: authState = {
   username: null,
 }
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
     login: (state, action: PayloadAction<string>) => {
@@ -29,6 +29,6 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = counterSlice.actions
+export const { login, logout } = authSlice.actions
 
-export default counterSlice.reducer
+export default authSlice.reducer
