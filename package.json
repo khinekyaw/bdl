@@ -11,11 +11,19 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@reduxjs/toolkit": "^1.9.7",
+    "@types/react-infinite-scroller": "^1.2.5",
+    "axios": "^1.6.1",
     "framer-motion": "^10.16.4",
+    "local-storage": "^2.0.0",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-redux": "^8.1.3"
+    "react-hook-form": "^7.48.2",
+    "react-infinite-scroller": "^1.2.6",
+    "react-redux": "^8.1.3",
+    "react-toastify": "^9.1.3",
+    "react-use-localstorage": "^3.5.3",
+    "store2": "^2.14.2"
   },
   "devDependencies": {
     "@types/node": "^20",
